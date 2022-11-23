@@ -9,56 +9,95 @@
  */
 
 import {
-  GetHeadConfig,
-  GetPath,
-  GetRedirects,
-  HeadConfig,
-  Template,
-  TemplateConfig,
-  TemplateProps,
-  TemplateRenderProps,
+    GetHeadConfig,
+    GetPath,
+    GetRedirects,
+    HeadConfig,
+    Template,
+    TemplateConfig,
+    TemplateProps,
+    TemplateRenderProps,
 } from "@yext/pages";
 import * as React from "react";
 import Banner from "../components/banner";
-import Details from "../components/details";
-import Hours from "../components/hours";
-import List from "../components/list";
 import PageLayout from "../components/page-layout";
-import StaticMap from "../components/static-map";
-import Favicon from "../public/yext-favicon.ico";
 import "../index.css";
+/*import InfoLocation from "../components/info-location";
+import About from "../components/about";
+import InEvidenza from "../components/InEvidenza";
+import SpecialitaServizi from "../components/SpecialitaServizi";
+import Nearby from "../components/Nearby";
+import DatiLegali from "../components/DatiLegali";*/
 
 /**
  * Required when Knowledge Graph data is used for a template.
  */
 export const config: TemplateConfig = {
-  stream: {
-    $id: "my-stream-id-1",
-    // Specifies the exact data that each generated document will contain. This data is passed in
-    // directly as props to the default exported function.
-    fields: [
-      "id",
-      "uid",
-      "meta",
-      "name",
-      "address",
-      "mainPhone",
-      "description",
-      "hours",
-      "slug",
-      "geocodedCoordinate",
-      "services",
-    ],
-    // Defines the scope of entities that qualify for this stream.
-    filter: {
-      entityTypes: ["location"],
+    stream: {
+        $id: "locations",
+        // Specifies the exact data that each generated document will contain. This data is passed in
+        // directly as props to the default exported function.
+        fields: [
+            "id",
+            "uid",
+            "meta",
+            "name",
+            "address",
+            "mainPhone",
+            "description",
+            "hours",
+            "slug",
+            "geocodedCoordinate",
+            "c_nomeStruttura",
+            "c_regione",
+            "c_descrizioneLunga",
+            "photoGallery",
+            "c_immagineStruttura",
+            "c_immagineSpecialita",
+            "c_immagine_cartina",
+            "c_descrizioneBreve",
+            "services",
+            "c_baseURL",
+            "c_uRLStrutturaSitoGVM",
+            "c_urlPrenotazione",
+            "c_urlContatti",
+            "c_urlOrari",
+            "websiteUrl",
+            "neighborhood",
+            "paymentOptions",
+            "primaryPhoto",
+            "c_iniziativeCorrelate.primaryPhoto",
+            "c_iniziativeCorrelate.c_descrizioneBreve",
+            "c_iniziativeCorrelate.c_baseURL",
+            "c_iniziativeCorrelate.slug",
+            "c_iniziativeCorrelate.name",
+            "c_contenutiInEvidenza",
+            "c_direttoreSanitario",
+            "c_amministratoreDelegato",
+            "c_postiLetto",
+            "c_datiAmministrazione_1",
+            "c_datiAmministrazione_2",
+            "c_elencoSpecialitaStrutturaGVM",
+            "c_elencoServiziStrutturaGVM",
+            "c_urlTutteLeSpecialita",
+            "c_regioneStruttura.name",
+            "c_regioneStruttura.id",
+            "c_regioneStruttura.slug",
+            "dm_directoryParents.name",
+            "dm_directoryParents.slug",
+            "dm_directoryParents.meta.entityType"
+        ],
+        // Defines the scope of entities that qualify for this stream.
+        filter: {
+            entityTypes: ["healthcareFacility"],
+            savedFilterIds: ["1234994255"]
+        },
+        // The entity language profiles that documents will be generated for.
+        localization: {
+            locales: ["it"],
+            primary: false,
+        },
     },
-    // The entity language profiles that documents will be generated for.
-    localization: {
-      locales: ["en"],
-      primary: false,
-    },
-  },
 };
 
 /**
@@ -68,11 +107,10 @@ export const config: TemplateConfig = {
  * take on the form: featureName/entityId
  */
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  return document.slug
-    ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+    return document.slug
+        ? document.slug
+        : `${document.locale}/${document.address.region}/${document.address.city}/${document.address.address1
+        }-${document.id.toString()}`;
 };
 
 /**
@@ -82,100 +120,93 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
  * a new deploy.
  */
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
-  return [`index-old/${document.id.toString()}`];
+    return [`index/${document.id.toString()}`];
 };
 
 /**
  * This allows the user to define a function which will take in their template
- * data and produce a HeadConfig object. When the site is generated, the HeadConfig
+ * data and procude a HeadConfig object. When the site is generated, the HeadConfig
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
-  relativePrefixToRoot,
-  path,
-  document,
+    relativePrefixToRoot,
+    path,
+    document,
 }): HeadConfig => {
-  return {
-    title: document.name,
-    charset: "UTF-8",
-    viewport: "width=device-width, initial-scale=1",
-    tags: [
-      {
-        type: "meta",
-        attributes: {
-          name: "description",
-          content: document.description,
-        },
-      },
-      {
-        type: "link",
-        attributes: {
-          rel: 'icon',
-          type: 'image/x-icon',
-          href: Favicon
-        },
-      }
-    ],
-  };
+    return {
+        title: document.name,
+        charset: "UTF-8",
+        viewport: "width=device-width, initial-scale=1",
+        tags: [
+            {
+                type: "meta",
+                attributes: {
+                    name: "description",
+                    content: document.description,
+                },
+            },
+            {
+                type: "meta",
+                attributes: {
+                    name: "author",
+                    content: "Gruppo Villa Maria",
+                },
+            },
+            {
+                type: "link",
+                attributes: {
+                    rel: "stylesheet",
+                    href: "https://use.typekit.net/yfq1avx.css"
+                }
+            }
+        ],
+    };
 };
 
-/**
- * This is the main template. It can have any name as long as it's the default export.
- * The props passed in here are the direct stream document defined by `config`.
- *
- * There are a bunch of custom components being used from the src/components folder. These are
- * an example of how you could create your own. You can set up your folder structure for custom
- * components any way you'd like as long as it lives in the src folder (though you should not put
- * them in the src/templates folder as this is specific for true template files).
- */
-const Location: Template<TemplateRenderProps> = ({
-  relativePrefixToRoot,
-  path,
-  document,
-}) => {
-  const {
-    _site,
-    name,
-    address,
-    openTime,
-    hours,
-    mainPhone,
-    geocodedCoordinate,
-    services,
-    description,
-  } = document;
 
-  return (
-    <>
-      <PageLayout _site={_site}>
-        <Banner name={name} address={address} />
-        <div className="centered-container">
-          <div className="section">
-            <div className="grid grid-cols-2 gap-x-10 gap-y-10">
-              <div className="bg-gray-100 p-2">
-                <Details address={address} phone={mainPhone}></Details>
-                {services && <List list={services}></List>}
-              </div>
-              <div className="bg-gray-100 p-2">
-                {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
-              </div>
-              {geocodedCoordinate && (
-                <StaticMap
-                  latitude={geocodedCoordinate.latitude}
-                  longitude={geocodedCoordinate.longitude}
-                ></StaticMap>
-              )}
-              <div className="bg-gray-100 p-2">
-                <div className="text-xl font-semibold">{`About ${name}`}</div>
-                <p className="pt-4">{description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </PageLayout>
-    </>
-  );
+const Location: Template<TemplateRenderProps> = ({
+    relativePrefixToRoot,
+    path,
+    document,
+}) => {
+    const {
+        name,
+        id,
+        address,
+        openTime,
+        hours,
+        mainPhone,
+        geocodedCoordinate,
+        c_nomeStruttura,
+        c_descrizioneBreve,
+        c_urlPrenotazione,
+        c_uRLStrutturaSitoGVM,
+        c_immagineStruttura,
+        dm_directoryParents,
+        c_descrizioneLunga,
+        c_urlOrari,
+        c_urlContatti,
+        c_direttoreSanitario,
+        c_amministratoreDelegato,
+        c_postiLetto,
+        c_contenutiInEvidenza,
+        c_elencoSpecialitaStrutturaGVM,
+        c_immagineSpecialita,
+        c_elencoServiziStrutturaGVM,
+        c_urlTutteLeSpecialita,
+        c_datiAmministrazione_1,
+        c_datiAmministrazione_2,
+
+    } = document;
+
+    return (
+        <>
+            <PageLayout name={name} c_name={c_nomeStruttura} id={id} address={address} urlPrenotazione={c_urlPrenotazione} urlStrutturaSitoGVM={c_uRLStrutturaSitoGVM} regione={dm_directoryParents} >
+                <Banner name={c_nomeStruttura} info={c_descrizioneBreve} openTime={openTime} tel={mainPhone} prenota={c_urlPrenotazione} immagine={c_immagineStruttura.url} hours={hours} />                
+            </PageLayout>
+        </>
+    );
 };
 
 export default Location;

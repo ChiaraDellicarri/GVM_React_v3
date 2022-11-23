@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\platform-config",
+    "\\src",
+    "\\src\\components",
+    "\\src\\templates"
+  ],
+  "SelectedNode": "\\tailwind.config.cjs",
+  "PreviewInSolutionExplorer": false
+}

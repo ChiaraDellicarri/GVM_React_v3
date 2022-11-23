@@ -124,7 +124,7 @@ type ExternalImageRenderData = TemplateRenderProps & {
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct result from `getStaticProps`.
  */
-const Static: Template<TemplateRenderProps> = ({
+const Index: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
   document
@@ -188,4 +188,4 @@ const Static: Template<TemplateRenderProps> = ({
     );
 };
 
-export default Static;
+export default Index;
