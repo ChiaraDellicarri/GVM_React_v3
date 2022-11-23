@@ -13,6 +13,7 @@ import {
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
+import Searchbox from "../components/Searchbox";
 import Footer from "../components/footer";
 
 export const config: TemplateConfig = {
@@ -161,6 +162,7 @@ const Index: Template<TemplateRenderProps> = ({
                     </div>
                     <div className="w-full">
                         {sortedStrutture}
+                        <Searchbox defaultLocations={strutture} />      
                     </div>
                     <div className="section" data-ya-scope="SectionListRegione">
                         <div className="container">
