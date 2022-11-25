@@ -37,7 +37,8 @@ const Nearby = (props: Nearby) => {
     return (
         <>
             {fetchPlaces}
-            <div className="section" data-ya-scope="SectionClinicheVicine">
+       
+            {/*<div className="section" data-ya-scope="SectionClinicheVicine">
                 <div className="container">
                     <div className="bg-gray-100 container_nearby">
                         <h4 className="text-center mb-2 title_nearby">Strutture vicine</h4>
@@ -64,7 +65,7 @@ const Nearby = (props: Nearby) => {
                             <br /></div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
         </>
     )
 }
