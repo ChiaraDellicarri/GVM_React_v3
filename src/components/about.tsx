@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-/*import { Remark } from 'react-remark';*/
+import { Remark } from 'react-remark';
 
 type About = {
     info: any;
@@ -37,7 +37,7 @@ const About = (props: About) => {
                             <div className="container_descrizione">
                                 <h2 className="mb-3 titolo_descrizione_lunga md:mb-5">Informazioni</h2>
                                 <div className="descrizione_lunga" id="descrizione_lunga">
-                                   {/* <Remark>{info}</Remark>*/}
+                                    <Remark>{info}</Remark>
                                 </div>
                             </div>
                         </div>
