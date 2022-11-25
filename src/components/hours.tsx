@@ -74,11 +74,11 @@ const defaultSorter: { [key: string]: number } = {
 
 //new
 const giorniTradotti: { [key: string]: string } = {
-    monday: 'Lunedì',
-    tuesday: 'Martedì',
-    wednesday: 'Mercoledì',
-    thursday: 'Giovedì',
-    friday: 'Venerdì',
+    monday: 'LunedÃ¬',
+    tuesday: 'MartedÃ¬',
+    wednesday: 'MercoledÃ¬',
+    thursday: 'GiovedÃ¬',
+    friday: 'VenerdÃ¬',
     saturday: 'Sabato',
     sunday: 'Domenica',
 }

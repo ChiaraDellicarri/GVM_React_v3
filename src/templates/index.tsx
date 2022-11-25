@@ -100,7 +100,7 @@ type ExternalImageRenderData = TemplateRenderProps & {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
- export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
+ /*export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
   document,
@@ -119,6 +119,30 @@ type ExternalImageRenderData = TemplateRenderProps & {
       }
     ],
   };
+};
+*/
+
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({ relativePrefixToRoot, path, document }): HeadConfig => {
+    return {
+        title: "Home Page",
+        charset: "UTF-8",
+        viewport: "width=device-width, initial-scale=1",
+        tags: [
+            {
+                type: "meta",
+                attributes: {
+                    description: "This is a description for the home page.",
+                },
+            },
+            {
+                type: "link",
+                attributes: {
+                    rel: "stylesheet",
+                    href: "https://use.typekit.net/yfq1avx.css"
+                },
+            }
+        ],
+    };
 };
 
 
