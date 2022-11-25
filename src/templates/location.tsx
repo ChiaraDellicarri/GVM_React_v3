@@ -24,6 +24,7 @@ import Banner from "../components/banner";
 import InEvidenza from "../components/InEvidenza";
 import InfoLocation from "../components/info-location";
 import PageLayout from "../components/page-layout";
+import SpecialitaServizi from "../components/SpecialitaServizi";
 import "../index.css";
 /*import InfoLocation from "../components/info-location";
 import About from "../components/about";
@@ -219,6 +220,7 @@ const Location: Template<TemplateRenderProps> = ({
                     postiLetto={c_postiLetto}
                 />
                 {c_contenutiInEvidenza && <InEvidenza articoli={c_contenutiInEvidenza} />}
+                {c_elencoSpecialitaStrutturaGVM && <SpecialitaServizi name={name} c_name={c_nomeStruttura} immagine={c_immagineSpecialita} specialita={c_elencoSpecialitaStrutturaGVM} servizi={c_elencoServiziStrutturaGVM} link={c_urlTutteLeSpecialita} />}
             </PageLayout>
         </>
     );
