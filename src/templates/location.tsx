@@ -21,6 +21,7 @@ import {
 import * as React from "react";
 import About from "../components/about";
 import Banner from "../components/banner";
+import InEvidenza from "../components/InEvidenza";
 import InfoLocation from "../components/info-location";
 import PageLayout from "../components/page-layout";
 import "../index.css";
@@ -217,6 +218,7 @@ const Location: Template<TemplateRenderProps> = ({
                     amministratoreDelegato={c_amministratoreDelegato}
                     postiLetto={c_postiLetto}
                 />
+                {c_contenutiInEvidenza && <InEvidenza articoli={c_contenutiInEvidenza} />}
             </PageLayout>
         </>
     );
