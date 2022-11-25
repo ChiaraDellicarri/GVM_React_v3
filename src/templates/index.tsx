@@ -15,6 +15,7 @@ import {
 } from "@yext/pages";
 import Searchbox from "../components/Searchbox";
 import Footer from "../components/footer";
+import HeaderIndex from "../components/header-index";
 
 export const config: TemplateConfig = {
     stream: {
@@ -158,7 +159,9 @@ const Index: Template<TemplateRenderProps> = ({
             <div className="flex min-h-screen w-full">
                 <div className="w-full">
                     <div className="header sticky top-0">
-                       
+                        <HeaderIndex
+                            logo="https://www.gvmnet.it/App_Themes/GVMNet/images/gruppovillamaria_logo.png"
+                        ></HeaderIndex>
                     </div>
                     <div className="w-full">
                         {sortedStrutture}

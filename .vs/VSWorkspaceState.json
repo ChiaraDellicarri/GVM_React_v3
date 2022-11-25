@@ -4,8 +4,9 @@
     "\\platform-config",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\components",
     "\\src\\templates"
   ],
-  "SelectedNode": "\\tailwind.config.cjs",
+  "SelectedNode": "\\src\\components\\Searchbox.tsx",
   "PreviewInSolutionExplorer": false
 }
