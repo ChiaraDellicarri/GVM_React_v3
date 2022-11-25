@@ -21,8 +21,10 @@ import {
 import * as React from "react";
 import About from "../components/about";
 import Banner from "../components/banner";
+import DatiLegali from "../components/DatiLegali";
 import InEvidenza from "../components/InEvidenza";
 import InfoLocation from "../components/info-location";
+import Nearby from "../components/Nearby";
 import PageLayout from "../components/page-layout";
 import SpecialitaServizi from "../components/SpecialitaServizi";
 import "../index.css";
@@ -221,6 +223,8 @@ const Location: Template<TemplateRenderProps> = ({
                 />
                 {c_contenutiInEvidenza && <InEvidenza articoli={c_contenutiInEvidenza} />}
                 {c_elencoSpecialitaStrutturaGVM && <SpecialitaServizi name={name} c_name={c_nomeStruttura} immagine={c_immagineSpecialita} specialita={c_elencoSpecialitaStrutturaGVM} servizi={c_elencoServiziStrutturaGVM} link={c_urlTutteLeSpecialita} />}
+                <Nearby lat={geocodedCoordinate.latitude} lng={geocodedCoordinate.longitude} />
+                <DatiLegali dati1={c_datiAmministrazione_1} dati2={c_datiAmministrazione_2} />
             </PageLayout>
         </>
     );
