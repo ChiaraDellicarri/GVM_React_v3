@@ -223,7 +223,7 @@ const Location: Template<TemplateRenderProps> = ({
                 />
                 {c_contenutiInEvidenza && <InEvidenza articoli={c_contenutiInEvidenza} />}
                 {c_elencoSpecialitaStrutturaGVM && <SpecialitaServizi name={name} c_name={c_nomeStruttura} immagine={c_immagineSpecialita} specialita={c_elencoSpecialitaStrutturaGVM} servizi={c_elencoServiziStrutturaGVM} link={c_urlTutteLeSpecialita} />}
-                <Nearby lat={geocodedCoordinate.latitude} lng={geocodedCoordinate.longitude} />
+                <Nearby geocodedCoordinate={geocodedCoordinate} />
                 <DatiLegali dati1={c_datiAmministrazione_1} dati2={c_datiAmministrazione_2} />
             </PageLayout>
         </>

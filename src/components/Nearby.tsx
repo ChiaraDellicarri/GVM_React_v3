@@ -2,16 +2,15 @@ import * as React from 'react';
 import { useState } from 'react';
 
 type Nearby = {
-    lat: any;
-    lng: any;
+    geocodedCoordinate: any;
 }
 
 const Nearby = (props: Nearby) => {
-    const { lat, lng } = props;
+    const { geocodedCoordinate } = props;
     const baseURL = "https://liveapi.yext.com/v2/accounts/me/entities/geosearch?";
     const api_key = "41c4aa25e98644dc44dc57714b21d37f";
     const vparam = "20221116";
-    const location = lat + ", " + lng;
+    const location = geocodedCoordinate.latitude + ", " + geocodedCoordinate.longitude;
     const limit = 3;
     const radius = 500;
     const savedFilterIds = "1234994255";
@@ -37,11 +36,12 @@ const Nearby = (props: Nearby) => {
 
     return (
         <>
+            {fetchPlaces}
             <div className="section" data-ya-scope="SectionClinicheVicine">
                 <div className="container">
                     <div className="bg-gray-100 container_nearby">
                         <h4 className="text-center mb-2 title_nearby">Strutture vicine</h4>
-                        <div className="location-data">
+                        <div className="location-data">  
                             {place ? (<>
                                 {place.map((el, index) => {
                                     if (index > 0) {
