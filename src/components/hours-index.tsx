@@ -115,18 +115,18 @@ const checkIfOpen = (props) => {
                 minEnd = "00"
             }
             return (
-                <div className="open-now-string"><strong>Aperto</strong> · Chiude alle {oreEnd.toString() + ":" + minEnd}</div>
+                <div className="open-now-string"><strong>Aperto</strong> Â· Chiude alle {oreEnd.toString() + ":" + minEnd}</div>
             )
         }
         else {
             return (
-                <div className="open-now-string"><strong>Chiuso</strong> · Apre alle {oreStart.toString() + ":" + minStart}</div>
+                <div className="open-now-string"><strong>Chiuso</strong> Â· Apre alle {oreStart.toString() + ":" + minStart}</div>
             )
         }
     }
     else {
         return (
-            <div className="open-now-string"><strong>Chiuso</strong> · Apre alle {oreStart.toString() + ":" + minStart.toString()}</div>
+            <div className="open-now-string"><strong>Chiuso</strong> Â· Apre alle {oreStart.toString() + ":" + minStart.toString()}</div>
         )
     }
 

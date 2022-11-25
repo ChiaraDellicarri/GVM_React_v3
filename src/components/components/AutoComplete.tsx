@@ -92,7 +92,7 @@ class AutoComplete extends Component {
                 className="bg-transparent w-full mx-2 focus:outline-none pac-target-input"
                 onFocus={this.clearSearchBox}
                 /* placeholder="Inserisci l'indirizzo o la citt&agrave;"*/
-                placeholder="Inserisci l'indirizzo o la città"
+                placeholder="Inserisci l'indirizzo o la cittÃ "
                 onKeyDown={this.handleKeyDown}
             />
 
