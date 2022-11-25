@@ -937,11 +937,21 @@ ul {
 
 
     .box_inevidenza .bg_box {
-        height: 150px;
-        width: 100% !important;
+        height: 52vw;
+        width: 100%;
         background-size: cover !important;
         background-position: center center !important;
     }
+
+.box_inevidenza .bg_box.dentalunit:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url(assets/images/bordo-dentalunit-1.png);
+    background-size: 100% 100%;
+    display: block;
+}
+
 
 .giorno_attivo strong, .giorno_attivo div {
     font-weight: bold !important;
@@ -1160,18 +1170,24 @@ ul {
     opacity: 0.5;
 } */
 
-    .logo_gvm img {
-        height: 32px;
-        cursor: pointer;
-    }
+.logo_gvm img {
+    height: 32px;
+    cursor: pointer;
+}
 
-.box_inevidenza .bg_box {
-    height: 200px;
+/* .box_inevidenza .bg_box{
+    height: 200px;    
+} */
+
+@media (min-width:400px) {
+    .box_inevidenza .bg_box {
+        height: 212px;
+    }
 }
 
 @media (min-width:576px) {
-    .footer-links > div > a {
-        margin: .5rem .75rem 0;
+    .box_inevidenza .bg_box {
+        height: 210px;
     }
 
     .regioni-list li {
@@ -1303,6 +1319,9 @@ ul {
     .box_inevidenza {
         width: calc(50% - 20px);
         margin: 20px 10px;
+    }
+    .box_inevidenza .bg_box {
+        height: 197px;
     }
 
     .big_title {
@@ -1482,10 +1501,10 @@ ul {
         flex-grow: 1;
     }
 
-        .box_inevidenza .bg_box {
+/*        .box_inevidenza .bg_box {
             padding-bottom: 50%;
         }
-
+*/
     .main_banner_info {
         padding: 30px;
     }
