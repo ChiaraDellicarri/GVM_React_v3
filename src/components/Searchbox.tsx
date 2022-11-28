@@ -197,7 +197,7 @@ class Searchbox extends Component<Props> {
                         </div>
                     </div>
                 </div>
-                <div id="map" style={{ position: "relative", overflow: "hidden" }}>
+                <div id="map" className="hidden md:block" style={{ position: "relative", overflow: "hidden" }}>
                     <div className="google-map">
                         <GoogleMap
                             bootstrapURLKeys={{ key: import.meta.env.YEXT_PUBLIC_GOOGLE_API_KEY, language: 'it', libraries: ['places', 'geometry'] }}
