@@ -5,8 +5,9 @@
     "\\src",
     "\\src\\components",
     "\\src\\components\\components",
+    "\\src\\public",
     "\\src\\templates"
   ],
-  "SelectedNode": "\\src\\components\\Searchbox.tsx",
+  "SelectedNode": "\\src\\templates\\location.tsx",
   "PreviewInSolutionExplorer": false
 }

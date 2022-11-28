@@ -1,44 +1,40 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Nearby = {
     geocodedCoordinate: any;
 }
 
+
 const Nearby = (props: Nearby) => {
+   
     const { geocodedCoordinate } = props;
     const baseURL = "https://liveapi.yext.com/v2/accounts/me/entities/geosearch?";
     const api_key = "41c4aa25e98644dc44dc57714b21d37f";
     const vparam = "20221116";
-    const location = geocodedCoordinate.latitude + ", " + geocodedCoordinate.longitude;
+    const location = geocodedCoordinate.latitude + "," + geocodedCoordinate.longitude;
     const limit = 3;
     const radius = 500;
     const savedFilterIds = "1234994255";
     const entityTypes = "healthcareFacility";
-    const fields = "name,c_nomeStruttura,hours,neighborhood,address,mainPhone,timeZoneUtcOffset,c_baseURL,c_immagineStruttura,slug";
+    const fields = "name,c_nomeStruttura,address,c_baseURL,c_immagineStruttura,slug";
     const fullURL = baseURL + "api_key=" + api_key + "&v=" + vparam + "&location=" + location + "&limit=" + (limit + 1) + "&radius=" + radius + "&entityTypes=" + entityTypes + "&savedFilterIds=" + savedFilterIds + "&fields=" + fields + "&resolvePlaceholders=true";
 
 
-    const [place, setPlace] = useState();
+    const [place, setPlace] = useState<any[]>([]);
 
-
-    const fetchPlaces = async () => {
-        await fetch(fullURL)
-            .then((response) => response.json())
-            .then((data) => {
-                setPlace(data.response.entities);
-            })
-    };
-    if (fullURL) {
-        fetchPlaces();
-    }
-
+    useEffect(() => {
+        const getData = async () => {
+            const resp = await fetch(fullURL);
+            const json = await resp.json()
+            setPlace(json.response.entities);
+        }
+        getData();
+    }, []);
 
     return (
         <>
-            {fetchPlaces}
-       
-            {/*<div className="section" data-ya-scope="SectionClinicheVicine">
+            <div className="section" data-ya-scope="SectionClinicheVicine">
                 <div className="container">
                     <div className="bg-gray-100 container_nearby">
                         <h4 className="text-center mb-2 title_nearby">Strutture vicine</h4>
@@ -65,7 +61,7 @@ const Nearby = (props: Nearby) => {
                             <br /></div>
                     </div>
                 </div>
-            </div>*/}
+            </div>
         </>
     )
 }
